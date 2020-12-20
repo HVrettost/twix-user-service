@@ -1,0 +1,5 @@
+rootProject.name = 'twix-user-service'
+
+include 'user-application'
+include 'user-infrastructure'
+include 'user-quality-check'
