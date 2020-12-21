@@ -1,16 +1,45 @@
 plugins {
-    id 'groovy'
-    id 'java'
+    id 'checkstyle'
+    id 'codenarc'
 }
 
-group 'twix,user'
-version 'unspecified'
+group 'twix.user'
+version '1.0'
 
-repositories {
-    mavenCentral()
+def authorizationQualityCheckProjectBuildDir = project.buildDir
+
+checkstyle {
+    version '8.37'
+    reportsDir file("$authorizationQualityCheckProjectBuildDir/checkstyleReports")
+    configDir project.file('config/checkstyle')
+    configFile project.file('config/checkstyle/checkstyle.xml')
+    ignoreFailures false
+    showViolations true
+    maxErrors 0
+    checkstyleMain {
+        source {
+            files rootProject.files('user-application/src/main/java')
+        }
+        reports {
+            html.enabled true
+            xml.enabled false
+        }
+    }
 }
 
-dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+codenarc {
+    version '2.0'
+    configFile project.file('config/codenarc/codenarc.xml')
+    ignoreFailures false
+    reportsDir file("$authorizationQualityCheckProjectBuildDir/codenarcReports")
+    maxPriority1Violations 0
+    maxPriority2Violations 0
+    maxPriority3Violations 0
+    reportFormat 'html'
+    codenarcMain {
+        source {
+            files rootProject.files('user-application/src/test/groovy')
+            //add functional tests files
+        }
+    }
 }
