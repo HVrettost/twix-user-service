@@ -15,7 +15,7 @@ import javax.persistence.GenerationType;
 @Getter
 @Setter
 @Entity
-@Table(schema = "USER", name = "USER_DATA")
+@Table(name = "USER_DATA")
 public class User {
 
     @Id

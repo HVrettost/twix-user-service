@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import twix.user.api.UserRetrievalApi;
-import twix.user.model.dto.UserAuthDto;
+import twix.user.model.dto.UserCredentialsDto;
 import twix.user.service.UserRetrievalService;
 
 @RestController
@@ -18,8 +18,8 @@ public class UserRetrievalController implements UserRetrievalApi {
     }
 
     @Override
-    public ResponseEntity<UserAuthDto> getUserByUsernameForAuthentication(String username) {
-        UserAuthDto authUser = userRetrievalService.getUserByUsernameForAuthentication(username);
-        return new ResponseEntity<>(authUser, HttpStatus.OK);
+    public ResponseEntity<UserCredentialsDto> getUserCredentials(String username) {
+        UserCredentialsDto userCredentials = userRetrievalService.getUserCredentials(username);
+        return new ResponseEntity<>(userCredentials, HttpStatus.OK);
     }
 }

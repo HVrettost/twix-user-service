@@ -1,8 +1,8 @@
 package twix.user.dao;
 
-import twix.user.model.dto.UserAuthDto;
+import twix.user.model.dto.UserCredentialsDto;
 
 public interface UserRetrievalDao {
 
-    UserAuthDto getUserByUsernameForAuthentication(String username);
+    UserCredentialsDto getUserCredentials(String username);
 }

@@ -1,8 +1,8 @@
 package twix.user.service;
 
-import twix.user.model.dto.UserAuthDto;
+import twix.user.model.dto.UserCredentialsDto;
 
 public interface UserRetrievalService {
 
-    UserAuthDto getUserByUsernameForAuthentication(String username);
+    UserCredentialsDto getUserCredentials(String username);
 }

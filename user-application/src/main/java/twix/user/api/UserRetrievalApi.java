@@ -5,12 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import twix.user.model.dto.UserAuthDto;
+import twix.user.model.dto.UserCredentialsDto;
 
 @RequestMapping(value = "/api/users")
 public interface UserRetrievalApi {
 
-    @GetMapping(value = "auth/{username}",
+    @GetMapping(value = "/{username}/credentials",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<UserAuthDto> getUserByUsernameForAuthentication(@PathVariable("username") String username);
+    ResponseEntity<UserCredentialsDto> getUserCredentials(@PathVariable("username") String username);
 }

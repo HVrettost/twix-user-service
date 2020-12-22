@@ -2,10 +2,8 @@ package twix.user.dao;
 
 import org.springframework.stereotype.Component;
 
-import twix.user.mapper.UserAuthMapper;
-import twix.user.mapper.UserMapper;
-import twix.user.model.dto.UserAuthDto;
-import twix.user.model.dto.UserDto;
+import twix.user.mapper.UserCredentialsMapper;
+import twix.user.model.dto.UserCredentialsDto;
 import twix.user.model.entity.User;
 import twix.user.repository.UserRetrievalRepository;
 
@@ -13,17 +11,17 @@ import twix.user.repository.UserRetrievalRepository;
 public class UserRetrievalDaoImpl implements UserRetrievalDao {
 
     private final UserRetrievalRepository userRetrievalRepository;
-    private final UserAuthMapper userAuthMapper;
+    private final UserCredentialsMapper userCredentialsMapper;
 
     public UserRetrievalDaoImpl(UserRetrievalRepository userRetrievalRepository,
-                                UserAuthMapper userAuthMapper) {
+                                UserCredentialsMapper userCredentialsMapper) {
         this.userRetrievalRepository = userRetrievalRepository;
-        this.userAuthMapper = userAuthMapper;
+        this.userCredentialsMapper = userCredentialsMapper;
     }
 
     @Override
-    public UserAuthDto getUserByUsernameForAuthentication(String username) {
-        User user = userRetrievalRepository.findUserByUsername(username).get(); // if not found throw exception
-        return userAuthMapper.toDto(user.getUsername(), user.getPassword());
+    public UserCredentialsDto getUserCredentials(String username) {
+        User user = userRetrievalRepository.findByUsername(username).get(); // if not found throw exception
+        return userCredentialsMapper.toDto(user.getUsername(), user.getPassword());
     }
 }

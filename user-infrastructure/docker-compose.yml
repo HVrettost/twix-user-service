@@ -24,7 +24,7 @@ services:
     environment:
       FLYWAY_USER: postgres
       FLYWAY_PASSWORD: postgres
-      FLYWAY_SCHEMAS: user
+      FLYWAY_SCHEMAS: twix_user
       FLYWAY_URL: jdbc:postgresql://twix-user-database:5432/userdb
     command: -connectRetries=60 migrate
     depends_on:

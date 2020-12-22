@@ -2,7 +2,7 @@ package twix.user.service;
 
 import org.springframework.stereotype.Service;
 import twix.user.dao.UserRetrievalDao;
-import twix.user.model.dto.UserAuthDto;
+import twix.user.model.dto.UserCredentialsDto;
 
 @Service
 public class UserRetrievalServiceImpl implements UserRetrievalService {
@@ -14,7 +14,7 @@ public class UserRetrievalServiceImpl implements UserRetrievalService {
     }
 
     @Override
-    public UserAuthDto getUserByUsernameForAuthentication(String username) {
-        return userRetrievalDao.getUserByUsernameForAuthentication(username);
+    public UserCredentialsDto getUserCredentials(String username) {
+        return userRetrievalDao.getUserCredentials(username);
     }
 }

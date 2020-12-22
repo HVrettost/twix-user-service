@@ -2,7 +2,6 @@ package twix.user.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import twix.user.model.dto.UserAuthDto;
 import twix.user.model.dto.UserDto;
 import twix.user.model.entity.User;
 
